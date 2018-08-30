@@ -50,12 +50,36 @@ function update_pieChart(el){
 $(function() {
 	
 	var about_top = $('#about').offset().top;
-	console.log(about_top);
+	var scroll_count = 0; // 파이차트 재생 변수
 	
 	$(window).on('scroll', function(){
 		
+		var scroll_top = $(window).scrollTop();
+		
+		// 파이차트 재생 설정 초기화
+		if(scroll_top == 0){ scroll_count = 0;}
+		
 		// 파이차트 업데이트(#차트위치 요소명)
-		update_pieChart(about_top);
+		if(scroll_top >= about_top){
+			var chart_data = [];
+			chart_data.push($('.chart1').attr('data-percent'));
+			chart_data.push($('.chart2').attr('data-percent'));
+			chart_data.push($('.chart3').attr('data-percent'));
+			chart_data.push($('.chart4').attr('data-percent'));
+			console.log(chart_data);
+
+			if(scroll_count == 0){
+				$('[class^=chart]').each(function(){
+					var val = $(this).attr('data-percent');
+					$(this).data('easyPieChart').update(0).update(val);	
+				});			
+			}
+			scroll_count += 1;
+				
+		}
+
+		// 파이차트 업데이트(#차트위치 요소명)
+		// update_pieChart(about_top);
 	});
 	
     // 파이차트 세팅
@@ -64,7 +88,7 @@ $(function() {
 	$('.chart3').easyPieChart(pie_data3);     
 	$('.chart4').easyPieChart(pie_data4);     
 	
-	// 파이차트 내 정보 표시(data-percent)
+	// 파이차트 내 %정보 표시(data-percent)
 	$('[class^=chart]').each(function(i){
 		var attr = $(this).attr('data-percent');
 		$(this).find('span').text(attr);
