@@ -170,6 +170,37 @@ section h1:after{
 }
 
 
+/* CONNECT ME */
+#contact{ margin-bottom: 50px;}
+#contact h1{ margin-bottom: 50px;}
+#contact figure{
+}
+#contact figure img{
+	border-radius: 50%;
+}
+#contact div:last-of-type{
+	font-size: 26px;
+}
+#contact div:last-of-type a{
+	color: #666;
+}
+#contact .address{
+	margin-bottom: 0.5em;
+}
+#contact .sns li{
+	display: inline-block;
+	margin-right: 10px;
+	font-size: 1.4em;
+}
+
+#main_footer{
+	text-align: center;
+	background: #333;
+	color: #ccc;
+}
+
+
+
 /* 모바일 */
 @media (max-width: 767px){
 	#gnb h1{ font-size: 1.5em;}
@@ -189,6 +220,14 @@ section h1:after{
 		border-radius: 50%;
 		font-size: 1em;
 		float: left;
+	}	
+	
+	#contact div:first-of-type{
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	#contact div:last-of-type{
+		text-align: center;
 	}	
 }
 
